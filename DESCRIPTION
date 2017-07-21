@@ -1,0 +1,12 @@
+Package: Ragbu
+Type: Package
+Title: This package includes useful functions for data analysis in cognitive science
+Version: 0.1
+Date: 2017-07-21
+Author: Thomas Hinterecker
+Maintainer: Thomas Hinterecker <t.hinterecker@gmail.com>
+Depends: R (>= 3.0.1)
+Description: ...
+License: MIT
+LazyData: TRUE
+RoxygenNote: 6.0.1

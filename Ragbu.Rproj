@@ -1,0 +1,22 @@
+Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTeX: pdfLaTeX
+
+StripTrailingWhitespace: Yes
+
+BuildType: Package
+PackageUseDevtools: Yes
+PackageInstallArgs: --library=D:/R/win-library/3.2.2 --no-multiarch --with-keep.source
+PackageBuildArgs: --library=D:/R/win-library/3.2.2
+PackageBuildBinaryArgs: --library=D:/R/win-library/3.2.2
+PackageCheckArgs: --library=D:/R/win-library/3.2.2
