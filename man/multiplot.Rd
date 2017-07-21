@@ -2,8 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{multiplot}
 \alias{multiplot}
-\title{Plot muliple plots into a single plot
-Optionally, it is possible that plots share a single legend (of first plot in provided)}
+\title{Multiplot}
 \usage{
 multiplot(..., plotlist = NULL, shared_legend = FALSE, cols = 1)
 }
@@ -17,6 +16,5 @@ multiplot(..., plotlist = NULL, shared_legend = FALSE, cols = 1)
 \item{cols}{Number of cols of the shared legend plot}
 }
 \description{
-Plot muliple plots into a single plot
-Optionally, it is possible that plots share a single legend (of first plot in provided)
+Plot muliple plots into a single plot. Optionally, it is possible that plots share a single legend (of first plot in provided)
 }

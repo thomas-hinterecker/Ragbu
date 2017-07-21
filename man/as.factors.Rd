@@ -12,8 +12,8 @@ as.factors(data, tofactor)
 \item{tofactor}{A vector indicating the column names of the column which should be factorized.}
 }
 \value{
-data.frame
+Data frame
 }
 \description{
-Indicate columns of a data.frame as factors
+Indicate columns of a data frame as factors
 }

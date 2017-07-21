@@ -2,7 +2,7 @@
 % Please edit documentation in R/statistics.R
 \name{summarySE}
 \alias{summarySE}
-\title{Gives count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).}
+\title{Summarizes data}
 \usage{
 summarySE(data = NULL, measurevar, groupvars = NULL, na.rm = TRUE,
   conf.interval = 0.95)
@@ -19,7 +19,7 @@ summarySE(data = NULL, measurevar, groupvars = NULL, na.rm = TRUE,
 \item{conf.interval}{The percent range of the confidence interval (default is 95%)}
 }
 \value{
-data.frame   A data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
+a data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
 }
 \description{
 Gives count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).

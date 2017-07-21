@@ -2,7 +2,7 @@
 % Please edit documentation in R/outlier.R
 \name{rm.outlier}
 \alias{rm.outlier}
-\title{Remove outliers}
+\title{Remove Outliers in Data Frame}
 \usage{
 rm.outlier(data, columns, within_subjects = FALSE, wid = NULL,
   median = FALSE, sd_times = 3, print = FALSE)
@@ -23,8 +23,8 @@ rm.outlier(data, columns, within_subjects = FALSE, wid = NULL,
 \item{print}{Should the proportion of outliers in the data be printed?}
 }
 \value{
-data frame with removed outliers (indicated as NA)
+Data frame with removed outliers (indicated as NA)
 }
 \description{
-Remove outliers
+Removes outliers in a given data frame. Outliers can be remove within or across subjects.
 }

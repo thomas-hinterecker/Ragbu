@@ -2,7 +2,7 @@
 % Please edit documentation in R/statistics.R
 \name{se}
 \alias{se}
-\title{Calculates the standard error of the mean for a given vector}
+\title{SE}
 \usage{
 se(x)
 }

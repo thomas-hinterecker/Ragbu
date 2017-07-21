@@ -2,7 +2,7 @@
 % Please edit documentation in R/statistics.R
 \name{summarySEwithin}
 \alias{summarySEwithin}
-\title{Summarizes data, handling within-subjects variables by removing inter-subject variability}
+\title{Summarize within-subjects data}
 \usage{
 summarySEwithin(data = NULL, measurevar, betweenvars = NULL,
   withinvars = NULL, idvar = NULL, na.rm = TRUE, conf.interval = 0.95)
@@ -23,7 +23,7 @@ summarySEwithin(data = NULL, measurevar, betweenvars = NULL,
 \item{conf.interval}{The percent range of the confidence interval (default is 95%)}
 }
 \value{
-data.frame   A data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
+a data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
 }
 \description{
 Summarizes data, handling within-subjects variables by removing inter-subject variability

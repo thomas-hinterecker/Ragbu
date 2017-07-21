@@ -2,7 +2,7 @@
 % Please edit documentation in R/statistics.R
 \name{normDataWithin}
 \alias{normDataWithin}
-\title{Norms the data within specified groups in a data frame; it normalizes each subject (identified by idvar) so that they have the same mean, within each group specified by betweenvars.}
+\title{Normalize within-group data}
 \usage{
 normDataWithin(data = NULL, idvar, measurevar, betweenvars = NULL,
   na.rm = TRUE)
@@ -21,7 +21,7 @@ normDataWithin(data = NULL, idvar, measurevar, betweenvars = NULL,
 \item{conf.interval}{The percent range of the confidence interval (default is 95%)}
 }
 \value{
-data.frame   A data frame with normalized data
+a data frame with normalized data
 }
 \description{
 Norms the data within specified groups in a data frame; it normalizes each subject (identified by idvar) so that they have the same mean, within each group specified by betweenvars.

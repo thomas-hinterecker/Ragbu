@@ -2,11 +2,7 @@
 % Please edit documentation in R/statistics.R
 \name{ezAnalysis}
 \alias{ezAnalysis}
-\title{This function provides easy analysis of data from factorial experiments,
-including purely within-Ss designs (a.k.a. “repeated measures”),
-purely between-Ss designs, and mixed within-and-between-Ss designs,
-yielding either Linear mixed effect model, ANOVA or t-test results,
-as well as effect sizes and assumption checks.}
+\title{Compute ANOVA, LMM, or t-test}
 \usage{
 ezAnalysis(data, dv, wid = NULL, within = NULL, between = NULL,
   test = "aov", options = list(random_effects = NULL, contrasts = NULL, ddf
@@ -32,24 +28,20 @@ ezAnalysis(data, dv, wid = NULL, within = NULL, between = NULL,
 
 \item{print}{Set this parameter to FALSE if the function should not print the results.}
 
-\item{dfsep}{This specifies the seperator used to seperator the df values in the formatted results. By default, a comma is used.
+\item{dfsep}{This specifies the seperator used to seperator the df values in the formatted results. By default, a comma is used.}
 
-Option parameters
-LMER:}
+\item{random_effects}{LMER parameter: Use this parameter to specify a more complex random effects term of a linear mixed effects model. The given value must be of type string.}
 
-\item{random_effects}{Use this parameter to specify a more complex random effects term of a linear mixed effects model. The given value must be of type string.}
+\item{contrasts}{LMER parameter: Use this paramater to specify a list of contrasts for the fixed effects factors in a linear mixed effects model.}
 
-\item{contrasts}{Use this paramater to specify a list of contrasts for the fixed effects factors in a linear mixed effects model.}
+\item{ddf}{LMER parameter: This specifies the method used for calculating p-values of the fixed effects of the linear mixed model (Satterthwaite, Kenward-Roger, etc.).}
 
-\item{ddf}{This specifies the method used for calculating p-values of the fixed effects of the linear mixed model (Satterthwaite, Kenward-Roger, etc.).
-AOV:}
+\item{sph.cor}{ANOVA parameter: Use this paramater to specify the correction estimates to use for sphericity corrections of within factors of a ANOVA (GG, HF, no; default="GG").}
 
-\item{sph.cor}{Use this paramater to specify the correction estimates to use for sphericity corrections of within factors of a ANOVA (GG, HF, no; default="GG").}
-
-\item{mau.p}{Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).}
+\item{mau.p}{ANOVA parameter: Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).}
 }
 \value{
-model object (optional)
+Model object (optional)
 }
 \description{
 This function provides easy analysis of data from factorial experiments,

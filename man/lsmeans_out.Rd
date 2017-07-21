@@ -2,7 +2,7 @@
 % Please edit documentation in R/statistics.R
 \name{lsmeans_out}
 \alias{lsmeans_out}
-\title{Distilles the most relevant data from an output object of lsmeans, calculates effect sizes, and displays the results in a compact format.}
+\title{Format LSMEANS Output}
 \usage{
 lsmeans_out(lsmobj, paired = FALSE, n.equal = TRUE)
 }

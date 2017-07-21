@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.R
 \name{theme_apa}
 \alias{theme_apa}
-\title{APA theme for ggplot}
+\title{APA Theme for ggplot}
 \usage{
 theme_apa(plot.box = FALSE, base_size = 20)
 }
@@ -15,5 +15,5 @@ theme_apa(plot.box = FALSE, base_size = 20)
 The theme
 }
 \description{
-APA theme for ggplot
+Theme for ggplot following APA guidelines
 }
