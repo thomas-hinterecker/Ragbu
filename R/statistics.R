@@ -1,5 +1,6 @@
 #' Calculates the standard error of the mean for a given vector
 #'
+#' @title SE
 #' @param x Data (vector)
 #' @return The standard error
 #' @export
@@ -7,12 +8,13 @@ se <-  function(x) sqrt(var(x,na.rm=TRUE)/length(na.omit(x)))
 
 #' Gives count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
 #'
+#' @title Summarizes data
 #' @param data          A data frame
 #' @param measurevar    The name of a column that contains the variable to be summariezed
 #' @param groupvars     Vector containing names of columns that contain grouping variables
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
-#' @return data.frame   A data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
+#' @return a data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
 #' @import data.table
 #' @export
 summarySE <- function (data = NULL, measurevar, groupvars = NULL, na.rm = TRUE, conf.interval = 0.95) {
@@ -37,13 +39,14 @@ summarySE <- function (data = NULL, measurevar, groupvars = NULL, na.rm = TRUE, 
 
 #' Norms the data within specified groups in a data frame; it normalizes each subject (identified by idvar) so that they have the same mean, within each group specified by betweenvars.
 #'
+#' @title Normalize within-group data
 #' @param data          A data frame
 #' @param idvar         The name of a column that identifies each subject (or matched subjects)#'
 #' @param measurevar    The name of a column that contains the variable to be summariezed
 #' @param betweenvars   A vector containing names of columns that are between-subjects variables
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
-#' @return data.frame   A data frame with normalized data
+#' @return a data frame with normalized data
 #' @import data.table dplyr
 #' @export
 normDataWithin <- function (data = NULL, idvar, measurevar, betweenvars = NULL, na.rm = TRUE) {
@@ -62,6 +65,7 @@ normDataWithin <- function (data = NULL, idvar, measurevar, betweenvars = NULL, 
 
 #' Summarizes data, handling within-subjects variables by removing inter-subject variability
 #'
+#' @title Summarize within-subjects data
 #' @param data          A data frame
 #' @param measurevar    The name of a column that contains the variable to be summariezed
 #' @param betweenvars   A vector containing names of columns that are between-subjects variables
@@ -69,7 +73,7 @@ normDataWithin <- function (data = NULL, idvar, measurevar, betweenvars = NULL, 
 #' @param idvar         The name of a column that identifies each subject (or matched subjects)
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
-#' @return data.frame   A data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
+#' @return a data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
 #' @export
 summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, withinvars = NULL, idvar = NULL, na.rm = TRUE, conf.interval = 0.95) {
   # Ensure that the betweenvars and withinvars are factors
@@ -117,6 +121,7 @@ summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, within
 #' yielding either Linear mixed effect model, ANOVA or t-test results,
 #' as well as effect sizes and assumption checks.
 #'
+#' @title Compute ANOVA, LMM, or t-test
 #' @param data                 Data frame containing the data to be analyzed.
 #' @param dv                   Name of the column in data that contains the dependent variable. Values in this column must be numeric.
 #' @param wid                  Name of the column in data that contains the variable specifying the case/Ss identifier. This should be a unique value per case/Ss.
@@ -127,17 +132,12 @@ summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, within
 #' @param return_obj           Set this parameter to TRUE if you want that the analysis model is returned as function value.
 #' @param print                Set this parameter to FALSE if the function should not print the results.
 #' @param dfsep                This specifies the seperator used to seperator the df values in the formatted results. By default, a comma is used.
-#'
-#' Option parameters
-#' LMER:
-#' @param random_effects       Use this parameter to specify a more complex random effects term of a linear mixed effects model. The given value must be of type string.
-#' @param contrasts            Use this paramater to specify a list of contrasts for the fixed effects factors in a linear mixed effects model.
-#' @param ddf                  This specifies the method used for calculating p-values of the fixed effects of the linear mixed model (Satterthwaite, Kenward-Roger, etc.).
-#' AOV:
-#' @param sph.cor              Use this paramater to specify the correction estimates to use for sphericity corrections of within factors of a ANOVA (GG, HF, no; default="GG").
-#' @param mau.p                Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).
-#'
-#' @return model object (optional)
+#' @param random_effects       LMER parameter: Use this parameter to specify a more complex random effects term of a linear mixed effects model. The given value must be of type string.
+#' @param contrasts            LMER parameter: Use this paramater to specify a list of contrasts for the fixed effects factors in a linear mixed effects model.
+#' @param ddf                  LMER parameter: This specifies the method used for calculating p-values of the fixed effects of the linear mixed model (Satterthwaite, Kenward-Roger, etc.).
+#' @param sph.cor              ANOVA parameter: Use this paramater to specify the correction estimates to use for sphericity corrections of within factors of a ANOVA (GG, HF, no; default="GG").
+#' @param mau.p                ANOVA parameter: Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).
+#' @return Model object (optional)
 #' @import lme4 lmerTest ez afex DescTools effsize
 #' @importFrom plyr .
 #' @export
@@ -442,6 +442,7 @@ ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test 
 
 #' Distilles the most relevant data from an output object of lsmeans, calculates effect sizes, and displays the results in a compact format.
 #'
+#' @title Format LSMEANS Output
 #' @param lsmobj Output object created by a call to lsmeans.
 #' @param paired Set to true for paired data
 #' @param n.equal Set to false if number of subjects per group is not equal

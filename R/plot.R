@@ -1,6 +1,6 @@
-#' Plot muliple plots into a single plot
-#' Optionally, it is possible that plots share a single legend (of first plot in provided)
+#' Plot muliple plots into a single plot. Optionally, it is possible that plots share a single legend (of first plot in provided)
 #'
+#' @title Multiplot
 #' @param ...           Plots
 #' @param plotlist      List of plots
 #' @param shared_legend Set to true if plots should share the same legend
@@ -29,8 +29,9 @@ multiplot <- function(..., plotlist = NULL, shared_legend = FALSE, cols = 1) {
   }
 }
 
-#' APA theme for ggplot
+#' Theme for ggplot following APA guidelines
 #'
+#' @title APA Theme for ggplot
 #' @param plot.box             Is your plot a boxplot? (boolean)
 #' @param font_size_multiplier By how much do you want to muliply for font size? (Standard is 1)
 #' @return The theme

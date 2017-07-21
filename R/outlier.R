@@ -1,5 +1,6 @@
-#' Remove outliers
+#' Removes outliers in a given data frame. Outliers can be remove within or across subjects.
 #'
+#' @title Remove Outliers in Data Frame
 #' @param data              The data frame
 #' @param columns           Dependent variables
 #' @param within_subjects   Remove outlier within subjects or overall subjects?
@@ -7,7 +8,7 @@
 #' @param median            Should the outliers be identified via standard deviation or via median (boxplot)?
 #' @param sd_times          Below/above how many standard deviations from the mean is a value considered as an outlier?
 #' @param print             Should the proportion of outliers in the data be printed?
-#' @return data frame with removed outliers (indicated as NA)
+#' @return Data frame with removed outliers (indicated as NA)
 #' @export
 rm.outlier <- function (data, columns, within_subjects = FALSE, wid = NULL, median = FALSE, sd_times = 3, print = FALSE) {
   rm.outlier.do <- function (x, median = FALSE, sd_times = 3) {

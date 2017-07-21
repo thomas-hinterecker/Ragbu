@@ -2,7 +2,7 @@
 % Please edit documentation in R/factors.R
 \name{as.factors}
 \alias{as.factors}
-\title{Indicate columns of a data.frame as factors}
+\title{Factorize variables}
 \usage{
 as.factors(data, tofactor)
 }
