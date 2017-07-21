@@ -45,7 +45,7 @@ Model object (optional)
 }
 \description{
 This function provides easy analysis of data from factorial experiments,
-including purely within-Ss designs (a.k.a. “repeated measures”),
+including purely within-Ss designs (a.k.a. "repeated measures"),
 purely between-Ss designs, and mixed within-and-between-Ss designs,
 yielding either Linear mixed effect model, ANOVA or t-test results,
 as well as effect sizes and assumption checks.
