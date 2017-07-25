@@ -1,23 +1,21 @@
 Package: Ragbu
-Type: Package
 Title: This package includes useful functions for data analysis in cognitive science
 Version: 0.2.3
-Date: 2017-07-21
 Author: Thomas Hinterecker
-Maintainer: Thomas Hinterecker <t.hinterecker@gmail.com>
+Description: ...
 Depends: R (>= 3.0.1)
 Import:
-    DescTools
-    afex
-    data.table
-    effsize
-    ez
-    ggplot2
-    gridExtra
-    lmerTest
+    DescTools,
+    afex,
+    data.table,
+    effsize,
+    ez,
+    ggplot2,
+    gridExtra,
+    lmerTest,
     plyr
-Description: ...
 License: MIT
-LazyLoad: yes
+Encoding: UTF-8
+LazyData: true
 ByteCompile: true
 RoxygenNote: 6.0.1
