@@ -5,7 +5,9 @@
 #' @param plotlist      List of plots
 #' @param shared_legend Set to true if plots should share the same legend
 #' @param cols          Number of cols of the shared legend plot
-#' @import ggplot grid gridExtra
+#' @importFrom ggplot2 theme
+#' @importFrom gridExtra grid.arrange arrangeGrob
+#' @importFrom grid unit unit.c
 #' @export
 multiplot <- function(..., plotlist = NULL, shared_legend = FALSE, cols = 1) {
   plots <- c(list(...), plotlist)
@@ -17,7 +19,7 @@ multiplot <- function(..., plotlist = NULL, shared_legend = FALSE, cols = 1) {
       g <- ggplotGrob(plots[[1]] + theme(legend.position="bottom", legend.margin=unit(1, "cm")))$grobs
       legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
       lheight <- sum(legend$height)
-      grid::grid.arrange(
+      grid.arrange(
         do.call(arrangeGrob, c(lapply(plots, function(x) x + theme(plot.margin = unit(x = c(0, 0, 1, 0), units = "cm")) + theme(legend.position="none")), ncol=cols)),
         legend,
         ncol = 1,
@@ -35,6 +37,7 @@ multiplot <- function(..., plotlist = NULL, shared_legend = FALSE, cols = 1) {
 #' @param plot.box             Is your plot a boxplot? (boolean)
 #' @param font_size_multiplier By how much do you want to muliply for font size? (Standard is 1)
 #' @return The theme
+#' @importFrom ggplot2 theme_bw theme element_blank element_text element_line element_rect
 #' @export
 theme_apa <- function(plot.box = FALSE, base_size = 20){
   if (Sys.info()["sysname"] != "Windows") {

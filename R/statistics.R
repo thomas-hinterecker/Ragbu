@@ -15,7 +15,7 @@ se <-  function(x) sqrt(var(x,na.rm=TRUE)/length(na.omit(x)))
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
 #' @return a data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
-#' @import data.table
+#' @importFrom data.table data.table setkey
 #' @export
 summarySE <- function (data = NULL, measurevar, groupvars = NULL, na.rm = TRUE, conf.interval = 0.95) {
   data <- data.table(data)
@@ -47,7 +47,7 @@ summarySE <- function (data = NULL, measurevar, groupvars = NULL, na.rm = TRUE, 
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
 #' @return a data frame with normalized data
-#' @import data.table dplyr
+#' @importFrom data.table data.table setkey
 #' @export
 normDataWithin <- function (data = NULL, idvar, measurevar, betweenvars = NULL, na.rm = TRUE) {
   data <- data.table(data)
@@ -74,6 +74,7 @@ normDataWithin <- function (data = NULL, idvar, measurevar, betweenvars = NULL, 
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
 #' @return a data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
+#' @importFrom data.table merge
 #' @export
 summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, withinvars = NULL, idvar = NULL, na.rm = TRUE, conf.interval = 0.95) {
   # Ensure that the betweenvars and withinvars are factors
@@ -138,8 +139,13 @@ summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, within
 #' @param sph.cor              ANOVA parameter: Use this paramater to specify the correction estimates to use for sphericity corrections of within factors of a ANOVA (GG, HF, no; default="GG").
 #' @param mau.p                ANOVA parameter: Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).
 #' @return Model object (optional)
-#' @import lme4 lmerTest ez afex DescTools effsize car
+#' @importFrom lmerTest lmer anova
+#' @importFrom DescTools EtaSq
 #' @importFrom plyr .
+#' @importFrom stats aov
+#' @importFrom ez ezANOVA
+#' @importFrom afex aov_4
+#' @importFrom effsize cohen.d
 #' @export
 ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test = "aov", options = list(random_effects = NULL, contrasts = NULL, ddf = "Satterthwaite", sph.cor = "GG", mau.p = 0.05, peta = TRUE), return_obj = FALSE, print = TRUE, dfsep = ", ") {
   ################################ check args
@@ -213,8 +219,8 @@ ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test 
     contrasts <- options$contrasts
     if (is.null(options$ddf)) { ddf <- "Satterthwaite" } else { ddf <- options$ddf }
     ## LMER
-    model <- lmerTest::lmer(formula(model.formula), data=data, contrasts=contrasts)
-    model.ANOVA <- lmerTest::anova(model, ddf=ddf)
+    model <- lmer(formula(model.formula), data=data, contrasts=contrasts)
+    model.ANOVA <- anova(model, ddf=ddf)
     ## Create output table
     outtable <- data.frame(
       Effect=rownames(model.ANOVA),
@@ -240,7 +246,7 @@ ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test 
       ifelse(is.null(within)==FALSE, paste('+Error(', as.character(wid), '/(', paste(as.character(within), collapse = '*'), '))', sep=""), ''),
       sep=""
     )
-    list_etasq <- DescTools::EtaSq(stats::aov(formula(aov_formula), data=data_agg), type=ifelse(is.null(within), 2, 1))
+    list_etasq <- EtaSq(aov(formula(aov_formula), data=data_agg), type=ifelse(is.null(within), 2, 1))
     # Add etasq ...
     for (i in 1:nrow(outtable)) {
       outtable$etasq[i] <- format(round(list_etasq[as.character(outtable$Effect[i]), 1],2), nsmall=2)
@@ -277,7 +283,7 @@ ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test 
                                    "data=data.frame(data), ",
                                    ifelse(is.null(between), ", paired=TRUE", ""), ")",sep="")))
     # Effect size
-    cohensd <- eval(parse(text=paste("effsize::cohen.d(",
+    cohensd <- eval(parse(text=paste("cohen.d(",
                                      "data$", as.character(dv), "[data$", paste(c(between, within), sep=""), "=='", levels[1], "']", ",",
                                      "data$", as.character(dv), "[data$", paste(c(between, within), sep=""), "=='", levels[2], "']",
                                      ifelse(is.null(between), ", paired=TRUE", ""), ")", sep="")))
@@ -304,12 +310,12 @@ ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test 
       print(paste("Warning: Unknown correction method specified!", " Reporting uncorrected p-values instead.", sep=""), quote=FALSE)
     }
     # Run
-    model.test <- eval(parse(text=paste("ez::ezANOVA(",
+    model.test <- eval(parse(text=paste("ezANOVA(",
                                         "data,", as.character(dv), ",", as.character(wid), ",",
                                         ifelse(is.null(within), "NULL,", paste("within=.(", paste(as.character(within), collapse = ','), "),", sep="")),
                                         ifelse(is.null(between), "NULL,",paste("between=.(", paste(as.character(between), collapse = ','), "),", sep="")),
                                         "detailed=TRUE, return_aov=TRUE", ")", sep="")))
-    model <- afex::aov_4(formula(model.formula), data=data, anova_table=list(correction="none", es="pes"))
+    model <- aov_4(formula(model.formula), data=data, anova_table=list(correction="none", es="pes"))
     if (is.null(within)==TRUE) { model.ANOVA <- model.test$ANOVA[,] } else { model.ANOVA <- model.test$ANOVA[-1,] }
     # Effect sizes
     list_etasq <- DescTools::EtaSq(model.test$aov,type=ifelse(is.null(within), 2, 1))
