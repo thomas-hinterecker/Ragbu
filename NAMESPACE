@@ -11,12 +11,12 @@ export(summarySE)
 export(summarySEwithin)
 export(theme_apa)
 
-importFrom(afex,aov_4)
+
 importFrom(data.table,data.table)
 importFrom(data.table,merge)
 importFrom(data.table,setkey)
 importFrom(effsize,cohen.d)
-importFrom(ez,ezANOVA)
+
 importFrom(ggplot2,element_blank)
 importFrom(ggplot2,element_line)
 importFrom(ggplot2,element_rect)
