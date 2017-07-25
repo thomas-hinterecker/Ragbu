@@ -5,7 +5,7 @@ Version: 0.2.3
 Date: 2017-07-21
 Author: Thomas Hinterecker
 Maintainer: Thomas Hinterecker <t.hinterecker@gmail.com>
-Depends: R (>= 3.0.1), DescTools, afex, data.table, dplyr, effsize, ez, grid, gridExtra, lme4 (>= 1.1-12), lmerTest, plyr, car
+Depends: R (>= 3.0.1), DescTools, afex, data.table, dplyr, effsize, ez, grid, gridExtra, lmerTest, plyr, car
 Description: ...
 License: MIT
 LazyLoad: yes
