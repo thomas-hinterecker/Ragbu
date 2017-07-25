@@ -52,7 +52,7 @@ theme_apa <- function(plot.box = FALSE, base_size = 20){
   out <- theme(
     plot.title=element_text(family=RMN, size=base_size, hjust=0.5, face="bold", colour="black", margin=margin(t=0, r=0, b=20, l=0)),
     legend.text=element_text(family=RMN, size=0.9*base_size),
-    legend.title=element_text(family=RMN, size=20*font_size_multiplier),
+    legend.title=element_text(family=RMN, size=20*base_size),
     axis.title.x=element_text(family=RMN, size=base_size, margin=margin(t=15, r=0, b=5, l=0), colour="black"),
     axis.title.y=element_text(family=RMN, size=base_size, margin=margin(t=0, r=15, b=0, l=0), angle=90, colour="black"),
     axis.text.x=element_text(family=RMN, size=0.9*base_size, colour="black"),

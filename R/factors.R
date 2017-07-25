@@ -6,6 +6,6 @@
 #' @return Data frame
 #' @export
 as.factors <- function (data, tofactor) {
-  data <- data[,tofactor] <- lapply(data[,tofactor], as.factor)
+  data[,tofactor] <- lapply(data[,tofactor], as.factor)
   return(data)
 }
