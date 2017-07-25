@@ -138,7 +138,7 @@ summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, within
 #' @param sph.cor              ANOVA parameter: Use this paramater to specify the correction estimates to use for sphericity corrections of within factors of a ANOVA (GG, HF, no; default="GG").
 #' @param mau.p                ANOVA parameter: Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).
 #' @return Model object (optional)
-#' @import lme4 lmerTest ez afex DescTools effsize
+#' @import lme4 lmerTest ez afex DescTools effsize car
 #' @importFrom plyr .
 #' @export
 ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test = "aov", options = list(random_effects = NULL, contrasts = NULL, ddf = "Satterthwaite", sph.cor = "GG", mau.p = 0.05, peta = TRUE), return_obj = FALSE, print = TRUE, dfsep = ", ") {
