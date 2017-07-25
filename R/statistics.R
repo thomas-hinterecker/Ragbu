@@ -138,7 +138,7 @@ summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, within
 #' @param sph.cor              ANOVA parameter: Use this paramater to specify the correction estimates to use for sphericity corrections of within factors of a ANOVA (GG, HF, no; default="GG").
 #' @param mau.p                ANOVA parameter: Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).
 #' @return Model object (optional)
-#' @import pbkrtest
+#' @importFrom DescTools EtaSq
 #' @importFrom lmerTest lmer anova
 #' @importFrom plyr .
 #' @importFrom stats aov
@@ -317,7 +317,7 @@ ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test 
     model <- aov_4(formula(model.formula), data=data, anova_table=list(correction="none", es="pes"))
     if (is.null(within)==TRUE) { model.ANOVA <- model.test$ANOVA[,] } else { model.ANOVA <- model.test$ANOVA[-1,] }
     # Effect sizes
-    list_etasq <- DescTools::EtaSq(model.test$aov,type=ifelse(is.null(within), 2, 1))
+    list_etasq <- EtaSq(model.test$aov,type=ifelse(is.null(within), 2, 1))
     # Create output table
     outtable <- data.frame(
       Effect=model.ANOVA$Effect,
