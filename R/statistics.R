@@ -138,6 +138,7 @@ summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, within
 #' @param sph.cor              ANOVA parameter: Use this paramater to specify the correction estimates to use for sphericity corrections of within factors of a ANOVA (GG, HF, no; default="GG").
 #' @param mau.p                ANOVA parameter: Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).
 #' @return Model object (optional)
+#' @import pbkrtest
 #' @importFrom lmerTest lmer anova
 #' @importFrom DescTools EtaSq
 #' @importFrom plyr .
