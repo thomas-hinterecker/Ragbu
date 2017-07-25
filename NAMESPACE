@@ -11,11 +11,11 @@ export(summarySE)
 export(summarySEwithin)
 export(theme_apa)
 
-
+importFrom(afex,aov_4)
 importFrom(data.table,data.table)
 importFrom(data.table,setkey)
 importFrom(effsize,cohen.d)
-
+importFrom(ez,ezANOVA)
 importFrom(ggplot2,element_blank)
 importFrom(ggplot2,element_line)
 importFrom(ggplot2,element_rect)
@@ -26,6 +26,7 @@ importFrom(grid,unit)
 importFrom(grid,unit.c)
 importFrom(gridExtra,arrangeGrob)
 importFrom(gridExtra,grid.arrange)
-
+importFrom(lmerTest,anova)
+importFrom(lmerTest,lmer)
 importFrom(plyr,.)
 importFrom(stats,aov)
