@@ -140,7 +140,6 @@ summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, within
 #' @return Model object (optional)
 #' @import pbkrtest
 #' @importFrom lmerTest lmer anova
-#' @importFrom DescTools EtaSq
 #' @importFrom plyr .
 #' @importFrom stats aov
 #' @importFrom ez ezANOVA
@@ -246,14 +245,14 @@ ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test 
       ifelse(is.null(within)==FALSE, paste('+Error(', as.character(wid), '/(', paste(as.character(within), collapse = '*'), '))', sep=""), ''),
       sep=""
     )
-    list_etasq <- EtaSq(aov(formula(aov_formula), data=data_agg), type=ifelse(is.null(within), 2, 1))
+    # list_etasq <- EtaSq(aov(formula(aov_formula), data=data_agg), type=ifelse(is.null(within), 2, 1))
     # Add etasq ...
-    for (i in 1:nrow(outtable)) {
-      outtable$etasq[i] <- format(round(list_etasq[as.character(outtable$Effect[i]), 1],2), nsmall=2)
-      outtable$petasq[i] <- format(round(list_etasq[as.character(outtable$Effect[i]), 2],2), nsmall=2)
-      if (ncol(list_etasq) > 2) { outtable$pgetasq[i] <- format(round(list_etasq[as.character(outtable$Effect[i]), 3],2), nsmall=2) }
-    }
-    rm(agg_formula, aov_formula, list_etasq)
+#     for (i in 1:nrow(outtable)) {
+#       outtable$etasq[i] <- format(round(list_etasq[as.character(outtable$Effect[i]), 1],2), nsmall=2)
+#       outtable$petasq[i] <- format(round(list_etasq[as.character(outtable$Effect[i]), 2],2), nsmall=2)
+#       if (ncol(list_etasq) > 2) { outtable$pgetasq[i] <- format(round(list_etasq[as.character(outtable$Effect[i]), 3],2), nsmall=2) }
+#     }
+    rm(agg_formula, aov_formula) #, list_etasq
     #
     txttable <- outtable
     outspher_lev <- "N/A"
