@@ -13,7 +13,6 @@ export(theme_apa)
 
 
 importFrom(data.table,data.table)
-importFrom(data.table,merge)
 importFrom(data.table,setkey)
 importFrom(effsize,cohen.d)
 

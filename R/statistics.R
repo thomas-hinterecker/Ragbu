@@ -74,7 +74,6 @@ normDataWithin <- function (data = NULL, idvar, measurevar, betweenvars = NULL, 
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
 #' @return a data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
-#' @importFrom data.table merge
 #' @export
 summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, withinvars = NULL, idvar = NULL, na.rm = TRUE, conf.interval = 0.95) {
   # Ensure that the betweenvars and withinvars are factors
