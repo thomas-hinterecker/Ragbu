@@ -15,7 +15,7 @@ se <-  function(x) sqrt(var(x,na.rm=TRUE)/length(na.omit(x)))
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
 #' @return a data frame with count, mean, standard deviation, standard error of the mean, and confidence interval (default 95%).
-#' @importFrom data.table data.table setkey
+#' @importFrom data.table data.table setkeyv
 #' @export
 summarySE <- function (data = NULL, measurevar, groupvars = NULL, na.rm = TRUE, conf.interval = 0.95) {
   data <- data.table(data)
@@ -47,7 +47,7 @@ summarySE <- function (data = NULL, measurevar, groupvars = NULL, na.rm = TRUE, 
 #' @param na.rm         Boolean that indicates whether to ignore NA's
 #' @param conf.interval The percent range of the confidence interval (default is 95%)
 #' @return a data frame with normalized data
-#' @importFrom data.table data.table setkey
+#' @importFrom data.table data.table setkeyv
 #' @export
 normDataWithin <- function (data = NULL, idvar, measurevar, betweenvars = NULL, na.rm = TRUE) {
   data <- data.table(data)
