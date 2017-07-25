@@ -5,8 +5,7 @@ Version: 0.2.3
 Date: 2017-07-21
 Author: Thomas Hinterecker
 Maintainer: Thomas Hinterecker <t.hinterecker@gmail.com>
-Depends: R (>= 3.0.1)
-Imports: DescTools, afex, data.table, dplyr, effsize, ez, grid, gridExtra, lme4, lmerTest, plyr, mvtnorm, Rcpp, manipulate, expm, car, pbkrtest
+Depends: R (>= 3.0.1), DescTools, afex, data.table, dplyr, effsize, ez, grid, gridExtra, lme4, lmerTest, plyr, car
 Description: ...
 License: MIT
 RoxygenNote: 6.0.1

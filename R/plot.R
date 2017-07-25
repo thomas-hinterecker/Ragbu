@@ -5,7 +5,7 @@
 #' @param plotlist      List of plots
 #' @param shared_legend Set to true if plots should share the same legend
 #' @param cols          Number of cols of the shared legend plot
-#' @import grid gridExtra
+#' @import ggplot grid gridExtra
 #' @export
 multiplot <- function(..., plotlist = NULL, shared_legend = FALSE, cols = 1) {
   plots <- c(list(...), plotlist)
@@ -17,7 +17,7 @@ multiplot <- function(..., plotlist = NULL, shared_legend = FALSE, cols = 1) {
       g <- ggplotGrob(plots[[1]] + theme(legend.position="bottom", legend.margin=unit(1, "cm")))$grobs
       legend <- g[[which(sapply(g, function(x) x$name) == "guide-box")]]
       lheight <- sum(legend$height)
-      grid.arrange(
+      grid::grid.arrange(
         do.call(arrangeGrob, c(lapply(plots, function(x) x + theme(plot.margin = unit(x = c(0, 0, 1, 0), units = "cm")) + theme(legend.position="none")), ncol=cols)),
         legend,
         ncol = 1,

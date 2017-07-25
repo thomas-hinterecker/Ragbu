@@ -258,7 +258,7 @@ ezAnalysis <- function(data, dv, wid= NULL, within = NULL, between = NULL, test 
     levels <- eval(parse(text=paste("unique(data$", paste(c(between, within), sep=""), ")", sep="")))
     if (is.null(within)==TRUE) {
       # Levene test
-      levene <- eval(parse(text=paste("car::leveneTest(",
+      levene <- eval(parse(text=paste("leveneTest(",
                                       as.character(dv), "~", paste(c(between, within), sep=""), ",",
                                       "data=data.frame(data)", ")", sep="")))
       if (levene$"Pr(>F)"[1]<0.05) { test <- "welch t.test" }
