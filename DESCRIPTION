@@ -5,7 +5,7 @@ Author: Thomas Hinterecker
 Description: ...
 Depends: base, stats, R (>= 3.0.1)
 Imports:
-    DescTools,
+    DescTools (0.99.15),
     afex,
     data.table,
     effsize,
