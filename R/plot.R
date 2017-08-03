@@ -86,7 +86,7 @@ theme_apa <- function(plot.box = FALSE, base_size = 20){
 #' @title Plot AOV Residuals
 #' @param aov AOV object
 #' @export
-plot.aov.residuals <- function (aov) {
+plotresiduals.aov <- function (aov) {
   par(mfrow=c(1,2))
   plot(fitted(aov[[4]]), studres(aov[[4]]))
   abline(h=0, lty=2)
