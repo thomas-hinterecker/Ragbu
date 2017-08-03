@@ -9,18 +9,18 @@
 subsets.add <- function (subset, name, id=0) {
   subset_list = list(subset)
   if (id > 0 && any(with(experiment.subsets, ID == id))) {
-    experiment.subsets <<- mutate(
+    experiment.subsets <- mutate(
       experiment.subsets,
       Subset = ifelse(ID == id, subset_list, Subset))
   } else if (any(with(experiment.subsets, Name == name))) {
-    experiment.subsets <<- mutate(
+    experiment.subsets <- mutate(
       experiment.subsets,
       Subset = ifelse(Name == name, subset_list, Subset))
   } else {
     if (id == 0) {
       if (nrow(experiment.subsets) > 0) { id <- max(experiment.subsets$ID) + 1 } else { id <- 1 }
     }
-    experiment.subsets <<- add_row(
+    experiment.subsets <- add_row(
       experiment.subsets,
       ID = id,
       Name = name,
@@ -55,12 +55,12 @@ subsets.get <- function (id) {
 results.add <- function (result, name, type = "", id = 0) {
   result_list = list(result)
   if (id > 0 && any(with(experiment.results, ID == id))) {
-    experiment.results <<- mutate(
+    experiment.results <- mutate(
       experiment.results,
       Type = ifelse(ID == id, type, Type),
       Result = ifelse(ID == id, result_list, Result))
   } else if (any(with(experiment.results, Name == name))) {
-    experiment.results <<- mutate(
+    experiment.results <- mutate(
       experiment.results,
       Type = ifelse(Name == name, type, Type),
       Result = ifelse(Name == name, result_list, Result))
@@ -68,7 +68,7 @@ results.add <- function (result, name, type = "", id = 0) {
     if (id == 0) {
       if (nrow(experiment.results) > 0) { id <- max(experiment.results$ID) + 1 } else { id <- 1 }
     }
-    experiment.results <<- add_row(
+    experiment.results <- add_row(
       experiment.results,
       ID = id,
       Name = name,
@@ -104,18 +104,18 @@ results.get <- function (id) {
 plots.add <- function (plot, name, id = 0) {
   plot_list = list(plot)
   if (id > 0 && any(with(experiment.results, ID == id))) {
-    experiment.plots <<- mutate(
+    experiment.plots <- mutate(
       experiment.plots,
       Plot = ifelse(ID == id, plot_list, Plot))
   } else if (any(with(experiment.plots, Name == name))) {
-    experiment.plots <<- mutate(
+    experiment.plots <- mutate(
       experiment.plots,
       Plot = ifelse(Name == name, plot_list, Plot))
   } else {
     if (id == 0) {
       if (nrow(experiment.plots) > 0) { id <- max(experiment.plots$ID) + 1 } else { id <- 1 }
     }
-    experiment.plots <<- add_row(
+    experiment.plots <- add_row(
       experiment.plots,
       ID = id,
       Name = name,
