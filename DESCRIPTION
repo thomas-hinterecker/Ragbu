@@ -1,6 +1,6 @@
 Package: Ragbu
 Title: This package includes useful functions for data analysis in cognitive science
-Version: 0.2.3
+Version: 0.2.4
 Author: Thomas Hinterecker
 Description: ...
 Depends: base, stats, R (>= 3.0.1)
