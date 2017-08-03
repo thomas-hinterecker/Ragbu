@@ -52,7 +52,7 @@ subsets.get <- function (id) {
 #' @param id Result id (optional)
 #' @return The result
 #' @export
-results.add <- function (result, name = "", type = "", id = 0) {
+results.add <- function (result, name, type = "", id = 0) {
   result_list = list(result)
   if (id > 0 && any(with(experiment.results, ID == id))) {
     experiment.results <<- mutate(
@@ -101,7 +101,7 @@ results.get <- function (id) {
 #' @param id Plot id (optional)
 #' @return The plot
 #' @export
-plots.add <- function (plot, name = "", id = 0) {
+plots.add <- function (plot, name, id = 0) {
   plot_list = list(plot)
   if (id > 0 && any(with(experiment.results, ID == id))) {
     experiment.plots <<- mutate(

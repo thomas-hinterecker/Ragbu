@@ -4,7 +4,7 @@
 \alias{plots.add}
 \title{Add to Plots}
 \usage{
-plots.add(plot, name = "", id = 0)
+plots.add(plot, name, id = 0)
 }
 \arguments{
 \item{plot}{The plot}

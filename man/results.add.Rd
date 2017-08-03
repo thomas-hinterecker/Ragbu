@@ -4,7 +4,7 @@
 \alias{results.add}
 \title{Add to Results}
 \usage{
-results.add(result, name = "", type = "", id = 0)
+results.add(result, name, type = "", id = 0)
 }
 \arguments{
 \item{result}{The result}

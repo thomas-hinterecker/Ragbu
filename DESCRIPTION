@@ -10,6 +10,7 @@ Imports:
     data.table,
     effsize,
     ez,
+    tibble,
     ggplot2,
     gridExtra,
     lmerTest,
