@@ -1,9 +1,9 @@
 
 ## Experiment tibbles
 #' @importFrom tibble tibble
-experiment.subsets <- tibble(ID = numeric(), Name = character(), Subset = list())
-experiment.results <- tibble(ID = numeric(), Name = character(), Type = character(), Result = list())
-experiment.plots <- tibble(ID = numeric(), Name = character(), Plot = list())
+experiment.subsets <- tibble(ID = integer(), Name = character(), Subset = list())
+experiment.results <- tibble(ID = integer(), Name = character(), Type = character(), Result = list())
+experiment.plots <- tibble(ID = integer(), Name = character(), Plot = list())
 
 experimentTibblesEnv <- new.env()
 assign("experiment.subsets",experiment.subsets, envir=experimentTibblesEnv)
