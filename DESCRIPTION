@@ -3,9 +3,9 @@ Title: This package includes useful functions for data analysis in cognitive sci
 Version: 0.2.4
 Author: Thomas Hinterecker
 Description: ...
-Depends: base, stats, R (>= 3.0.1)
+Depends: base, stats, R (>= 3.0.1), DescTools (<= 0.99.15)
 Imports:
-    DescTools (<= 0.99.15),
+    DescTools
     afex,
     data.table,
     effsize,
