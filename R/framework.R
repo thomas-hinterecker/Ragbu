@@ -7,6 +7,7 @@
 #' @return The subset
 #' @export
 subsets.add <- function (subset, name, id=0) {
+  experiment.subsets <- get("experiment.subsets", envir=experimentTibblesEnv)
   subset_list = list(subset)
   if (id > 0 && any(with(experiment.subsets, ID == id))) {
     experiment.subsets <- mutate(
@@ -26,6 +27,7 @@ subsets.add <- function (subset, name, id=0) {
       Name = name,
       Subset = subset_list)
   }
+  assign("experiment.subsets", experiment.subsets, envir=experimentTibblesEnv)
   return(subset)
 }
 
@@ -36,11 +38,21 @@ subsets.add <- function (subset, name, id=0) {
 #' @return The subset
 #' @export
 subsets.get <- function (id) {
+  experiment.subsets <- get("experiment.subsets", envir=experimentTibblesEnv)
   if (is.numeric(id)) {
     return((filter(experiment.subsets, ID == id))$Subset[[1]])
   } else {
     return((filter(experiment.subsets, Name == id))$Subset[[1]])
   }
+}
+
+#' Lists all the stored subsets
+#'
+#' @title List Subsets
+#' @export
+subsets.list <- function () {
+  experiment.subsets <- get("experiment.subsets", envir=experimentTibblesEnv)
+  print(experiment.subsets)
 }
 
 #' Add any result to the results tibble of the experiment
@@ -53,6 +65,7 @@ subsets.get <- function (id) {
 #' @return The result
 #' @export
 results.add <- function (result, name, type = "", id = 0) {
+  experiment.results <- get("experiment.results", envir=experimentTibblesEnv)
   result_list = list(result)
   if (id > 0 && any(with(experiment.results, ID == id))) {
     experiment.results <- mutate(
@@ -76,6 +89,7 @@ results.add <- function (result, name, type = "", id = 0) {
       Result = result_list
     )
   }
+  assign("experiment.results", experiment.results, envir=experimentTibblesEnv)
   return(result)
 }
 
@@ -86,11 +100,21 @@ results.add <- function (result, name, type = "", id = 0) {
 #' @return The result
 #' @export
 results.get <- function (id) {
+  experiment.results <- get("experiment.results", envir=experimentTibblesEnv)
   if (is.numeric(id)) {
     return((filter(experiment.results, ID == id))$Result[[1]])
   } else {
     return((filter(experiment.results, Name == id))$Result[[1]])
   }
+}
+
+#' Lists all the stored results
+#'
+#' @title List Results
+#' @export
+results.list <- function () {
+  experiment.results <- get("experiment.results", envir=experimentTibblesEnv)
+  print(experiment.results)
 }
 
 #' Add a plot to the experiments' plots tibble
@@ -102,8 +126,9 @@ results.get <- function (id) {
 #' @return The plot
 #' @export
 plots.add <- function (plot, name, id = 0) {
+  experiment.plots <- get("experiment.plots", envir=experimentTibblesEnv)
   plot_list = list(plot)
-  if (id > 0 && any(with(experiment.results, ID == id))) {
+  if (id > 0 && any(with(experiment.plots, ID == id))) {
     experiment.plots <- mutate(
       experiment.plots,
       Plot = ifelse(ID == id, plot_list, Plot))
@@ -122,6 +147,7 @@ plots.add <- function (plot, name, id = 0) {
       Plot = plot_list
     )
   }
+  assign("experiment.plots", experiment.plots, envir=experimentTibblesEnv)
   return(plot)
 }
 
@@ -132,9 +158,19 @@ plots.add <- function (plot, name, id = 0) {
 #' @return The plot
 #' @export
 plots.get <- function (id) {
+  experiment.plots <- get("experiment.plots", envir=experimentTibblesEnv)
   if (is.numeric(id)) {
     return((filter(experiment.plots, ID == id))$Plot[[1]])
   } else {
     return((filter(experiment.plots, Name == id))$Plot[[1]])
   }
+}
+
+#' Lists all the stored plots
+#'
+#' @title List Plots
+#' @export
+plots.list <- function () {
+  experiment.plots <- get("experiment.plots", envir=experimentTibblesEnv)
+  print(experiment.plots)
 }

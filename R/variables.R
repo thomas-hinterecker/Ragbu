@@ -1,12 +1,16 @@
 
 ## Experiment tibbles
 #' @importFrom tibble tibble
-#' @export experiment.subsets
-experiment.subsets <<- tibble(ID = numeric(), Name = character(), Subset = list())
-#' @export experiment.results
-experiment.results <<- tibble(ID = numeric(), Name = character(), Type = character(), Result = list())
-#' @export experiment.plots
-experiment.plots <<- tibble(ID = numeric(), Name = character(), Plot = list())
+experiment.subsets <- tibble(ID = numeric(), Name = character(), Subset = list())
+experiment.results <- tibble(ID = numeric(), Name = character(), Type = character(), Result = list())
+experiment.plots <- tibble(ID = numeric(), Name = character(), Plot = list())
+
+experimentTibblesEnv <- new.env()
+assign("experiment.subsets",experiment.subsets, envir=experimentTibblesEnv)
+assign("experiment.results", experiment.results, envir=experimentTibblesEnv)
+assign("experiment.plots", experiment.plots, envir=experimentTibblesEnv)
+
+rm(experiment.subsets, experiment.results, experiment.plots)
 
 # Make Times New Roman font usable
 if (Sys.info()["sysname"] == "Windows") {
