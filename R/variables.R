@@ -14,7 +14,6 @@ rm(experiment.subsets, experiment.results, experiment.plots)
 
 # Make Times New Roman font usable
 if (Sys.info()["sysname"] == "Windows") {
-  windowsFonts(RMN=windowsFont("Times New Roman"))
   #' @export RMN
   RMN <- "RMN"
 } else {
