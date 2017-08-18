@@ -4,16 +4,20 @@
 \alias{theme_apa}
 \title{APA Theme for ggplot}
 \usage{
-theme_apa(plot.box = FALSE, base_size = 20)
+theme_apa(base_size = 11, base_family = "")
 }
 \arguments{
-\item{plot.box}{Is your plot a boxplot? (boolean)}
+\item{base_size}{base font size}
 
-\item{font_size_multiplier}{By how much do you want to muliply for font size? (Standard is 1)}
+\item{base_family}{base font family}
 }
 \value{
 The theme
 }
 \description{
 Theme for ggplot following APA guidelines
+}
+\examples{
+p <- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg, colour = factor(gear))) + facet_wrap(~am)
+p + theme_apa()
 }

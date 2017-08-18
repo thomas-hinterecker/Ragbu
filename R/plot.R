@@ -34,51 +34,23 @@ multiplot <- function(..., plotlist = NULL, shared_legend = FALSE, cols = 1) {
 #' Theme for ggplot following APA guidelines
 #'
 #' @title APA Theme for ggplot
-#' @param plot.box             Is your plot a boxplot? (boolean)
-#' @param font_size_multiplier By how much do you want to muliply for font size? (Standard is 1)
+#' @param base_size base font size
+#' @param base_family base font family
 #' @return The theme
 #' @importFrom ggplot2 theme_bw theme element_blank element_text element_line element_rect
 #' @export
-theme_apa <- function(plot.box = FALSE, base_size = 20){
-  if (Sys.info()["sysname"] != "Windows") {
-    windowsFonts <- NULL
-  }
-  if (Sys.info()["sysname"] == "Windows") {
-    windowsFonts(RMN=windowsFont("Times New Roman"))
-    RMN <- "RMN"
-  } else {
-    RMN <- "Times New Roman"
-  }
-  out <- theme(
-    plot.title=element_text(family=RMN, size=base_size, hjust=0.5, face="bold", colour="black", margin=margin(t=0, r=0, b=20, l=0)),
-    legend.text=element_text(family=RMN, size=0.9*base_size),
-    legend.title=element_text(family=RMN, size=base_size),
-    axis.title.x=element_text(family=RMN, size=base_size, margin=margin(t=15, r=0, b=5, l=0), colour="black"),
-    axis.title.y=element_text(family=RMN, size=base_size, margin=margin(t=0, r=15, b=0, l=0), angle=90, colour="black"),
-    axis.text.x=element_text(family=RMN, size=0.9*base_size, colour="black"),
-    axis.text.y=element_text(family=RMN, size=0.9*base_size, colour="black"),
-    strip.text.x=element_text(family=RMN, size=0.9*base_size, face="bold"),
-    strip.background=element_blank(),
-    axis.ticks=element_line(colour="black")
-  )
-  if (!plot.box) {
-    # The plot is not a boxplot
-    out <- out + theme(
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      panel.background = element_blank(),
-      panel.border = element_rect(fill = NA, colour = "white")) +
-      theme(axis.line.x = element_line(), axis.line.y = element_line())
-  } else {
-    # The plot is a boxplot
-    out <- out + theme(
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      panel.background = element_blank(),
-      panel.border = element_rect(fill = NA, colour = "grey50")
-    )
-  }
-  out
+#' @examples
+#' p <- ggplot(mtcars) + geom_point(aes(x = wt, y = mpg, colour = factor(gear))) + facet_wrap(~am)
+#' p + theme_apa()
+theme_apa <- function(base_size = 11, base_family = ""){
+  half_line <- base_size/2
+  theme_classic(base_size = base_size, base_family = base_family) %+replace%
+    theme(
+      plot.title = element_text(size = rel(1.2), hjust = 0.5, vjust = 1, face = "bold", colour = "black", margin = margin(b = half_line * 1.2)),
+      axis.text.x = element_text(margin = margin(t = 0.8 * half_line/2), vjust = 1, colour = "black"),
+      axis.text.y = element_text(margin = margin(r = 0.8 * half_line/2), hjust = 1, colour = "black"),
+      strip.text.x = element_text(margin = margin(t = half_line, b = half_line), colour = "black"),
+      complete = TRUE)
 }
 
 #' Plots the residuals of an ANOVA (aov) object for inspection
