@@ -139,7 +139,7 @@ summarySEwithin <- function (data = NULL, measurevar, betweenvars = NULL, within
 #' @param mau.p                ANOVA parameter: Use this paramater to specify the threshold for Mauchly's test of sphericity (default=0.05).
 #' @return Model object (optional)
 #' @importFrom DescTools EtaSq
-#' @importFrom lmerTest lmer anova
+#' @importFrom lmerTest lmer
 #' @importFrom plyr .
 #' @importFrom stats aov
 #' @importFrom ez ezANOVA
